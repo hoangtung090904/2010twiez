@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bí Mật Ngày 20/10 Dành Cho Bạn ✨</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pastel-pink-light: #FFF0F3;
+            --pastel-pink-soft: #FFE4E1;
+            --pastel-pink-main: #FFB6C1;
+            --pastel-pink-accent: #FF85A2;
+            --pastel-lavender: #E6E6FA;
+            --pastel-lavender-dark: #D8BFD8;
+            --milk-white: #FFFDFA;
+            --cream-white: #FAFAFA;
+            --text-dark: #4A3E4D;
+            --text-muted: #7E6C80;
+            --gold-accent: #F7B731;
+            --shadow-soft: 0 12px 35px rgba(255, 140, 160, 0.22);
+            --shadow-glow: 0 0 25px rgba(255, 182, 193, 0.65);
+            --transition-smooth: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 30%, #E6E6FA 70%, #FFB6C1 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 14s ease infinite;
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Canvas particles nền */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #confettiCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* Container trung tâm */
+        .app-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* Card chung hiệu ứng Glassmorphism */
+        .glass-card {
+            background: rgba(255, 253, 250, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            border-radius: 28px;
+            padding: 34px 24px;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+            pointer-events: none;
+            transform: rotate(25deg);
+        }
+
+        /* Âm thanh Controller góc phải */
+        .audio-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid var(--pastel-pink-main);
+            color: var(--pastel-pink-accent);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .audio-toggle-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background: #fff;
+        }
+
+        .audio-toggle-btn.playing {
+            animation: pulse-music 1.8s infinite;
+        }
+
+        @keyframes pulse-music {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 133, 162, 0.5); }
+            50% { box-shadow: 0 0 0 12px rgba(255, 133, 162, 0); }
+        }
+
+        /* Các bước (Steps) */
+        .step {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px) scale(0.97);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* STEP 1: Mở đầu */
+        .envelope-icon {
+            font-size: 72px;
+            display: inline-block;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 8px 12px rgba(255, 133, 162, 0.3));
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFE4E1, #E6E6FA);
+            color: #8A4F7D;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive, sans-serif;
+            font-size: 2.6rem;
+            color: #C0396B;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(255, 182, 193, 0.3);
+            line-height: 1.25;
+        }
+
+        .sub-description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            padding: 0 8px;
+        }
+
+        /* Nút bấm hiệu ứng Glow */
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FF85A2, #FFB6C1, #E6A4B4);
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(255, 133, 162, 0.45);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                rgba(255, 255, 255, 0) 20%,
+                rgba(255, 255, 255, 0.55) 50%,
+                rgba(255, 255, 255, 0) 80%
+            );
+            transform: rotate(30deg) translateY(-100%);
+            animation: lightShine 3.5s infinite;
+        }
+
+        @keyframes lightShine {
+            0% { transform: rotate(30deg) translateY(-100%); }
+            40%, 100% { transform: rotate(30deg) translateY(100%); }
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 133, 162, 0.6);
+        }
+
+        .btn-glow:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        /* STEP 2: Cú lừa & Quét dữ liệu hài hước */
+        .scanner-box {
+            padding: 20px 10px;
+        }
+
+        .radar-spinner {
+            width: 86px;
+            height: 86px;
+            margin: 0 auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radar-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px dashed var(--pastel-pink-accent);
+            animation: spin 5s linear infinite;
+        }
+
+        .radar-heart {
+            font-size: 38px;
+            animation: heartPulse 0.9s ease-in-out infinite alternate;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes heartPulse {
+            0% { transform: scale(0.85); }
+            100% { transform: scale(1.2); }
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background: #FFE8ED;
+            height: 14px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 182, 193, 0.6);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #FFB6C1, #FF85A2, #BA68C8);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        .scanner-log {
+            font-size: 1.05rem;
+            color: #8E4469;
+            font-weight: 600;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
+        }
+
+        .alert-error-card {
+            background: #FFF1F4;
+            border: 2px dashed #FF6B8B;
+            border-radius: 18px;
+            padding: 16px;
+            margin-top: 15px;
+            display: none;
+            animation: shake 0.6s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        .alert-error-title {
+            color: #E63946;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* STEP 3: Hộp Quà 3D Bí Ẩn */
+        .gift-scene {
+            perspective: 800px;
+            margin: 24px auto 30px;
+            width: 170px;
+            height: 170px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .sparkle-aura {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 214, 224, 0.9) 0%, rgba(230, 230, 250, 0.4) 40%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(12px);
+            animation: auraPulse 3s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes auraPulse {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        /* Box styling */
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: boxFloat 3.5s ease-in-out infinite;
+            transition: transform 0.4s ease;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.08) rotateY(12deg);
+        }
+
+        @keyframes boxFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-14px) rotate(2deg); }
+        }
+
+        .gift-box-base {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 150px;
+            height: 120px;
+            background: linear-gradient(135deg, #FF94B4 0%, #FF6B8B 100%);
+            border-radius: 16px;
+            box-shadow: 0 16px 30px rgba(255, 107, 139, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ribbon-vertical {
+            position: absolute;
+            width: 28px;
+            height: 100%;
+            background: linear-gradient(to right, #FFF3BF, #FEE180, #F7B731);
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px rgba(247, 183, 49, 0.5);
+        }
+
+        .ribbon-horizontal {
+            position: absolute;
+            height: 28px;
+            width: 100%;
+            background: linear-gradient(to bottom, #FFF3BF, #FEE180, #F7B731);
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 8px rgba(247, 183, 49, 0.5);
+        }
+
+        .gift-lid {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 170px;
+            height: 38px;
+            background: linear-gradient(135deg, #FFA6C2, #FF7B9A);
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .gift-lid .ribbon-vertical {
+            height: 38px;
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 56px;
+            height: 34px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bow-loop {
+            width: 26px;
+            height: 32px;
+            border: 5px solid #FEE180;
+            border-radius: 50% 50% 20% 50%;
+            background: linear-gradient(135deg, #FFF3BF, #F7B731);
+            box-shadow: 0 4px 10px rgba(247, 183, 49, 0.4);
+        }
+
+        .bow-loop.right {
+            border-radius: 50% 50% 50% 20%;
+            transform: scaleX(-1);
+        }
+
+        .bow-center {
+            position: absolute;
+            left: 50%;
+            top: 10px;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #F7B731;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .gift-scene.opened .gift-lid {
+            transform: translateY(-90px) rotate(-35deg) scale(0.9);
+            opacity: 0;
+        }
+
+        .gift-scene.opened .gift-box-base {
+            transform: scale(0.9);
+            filter: brightness(1.1);
+        }
+
+        .tap-hint {
+            font-size: 0.95rem;
+            color: #A36284;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            animation: bounceGentle 1.8s ease-in-out infinite;
+        }
+
+        @keyframes bounceGentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* STEP 4: Cao trào & Kết Quả */
+        .climax-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .flower-wreath {
+            font-size: 2.3rem;
+            margin-bottom: -6px;
+        }
+
+        .celebrate-heading {
+            font-family: 'Dancing Script', cursive, sans-serif;
+            font-size: 2.7rem;
+            color: #C0396B;
+            line-height: 1.2;
+            text-shadow: 0 3px 6px rgba(255, 107, 139, 0.25);
+        }
+
+        /* ========================================================
+           KHU VỰC GIỚI THIỆU 5 ẢNH QUÀ TẶNG (GIFT GALLERY CAROUSEL)
+           ======================================================== */
+        .gift-showcase-section {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 240, 245, 0.85));
+            border: 2px solid rgba(255, 182, 193, 0.6);
+            border-radius: 24px;
+            padding: 20px 16px;
+            box-shadow: 0 8px 25px rgba(255, 140, 160, 0.2);
+            position: relative;
+        }
+
+        .showcase-header {
+            margin-bottom: 14px;
+        }
+
+        .showcase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #FF85A2, #BA68C8);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            box-shadow: 0 3px 10px rgba(255, 133, 162, 0.35);
+        }
+
+        .showcase-title {
+            font-family: 'Dancing Script', cursive, sans-serif;
+            font-size: 1.95rem;
+            color: #B83265;
+            margin-bottom: 4px;
+        }
+
+        .showcase-subtitle {
+            font-size: 0.92rem;
+            color: #7A5F76;
+            font-weight: 500;
+        }
+
+        /* Khung Carousel */
+        .carousel-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            max-height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 3px solid #fff;
+            background: #FFE4E8;
+            margin-bottom: 12px;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay nhãn dán trên mỗi ảnh */
+        .slide-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 8px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            pointer-events: none;
+        }
+
+        .slide-tag-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #C0396B;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .slide-tag-desc {
+            font-size: 0.8rem;
+            color: #6C556D;
+            margin-top: 2px;
+        }
+
+        /* Nút Prev / Next Carousel */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1.5px solid var(--pastel-pink-main);
+            color: #B83265;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.25s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: #FFE4E1;
+            transform: translateY(-50%) scale(1.12);
+        }
+
+        .carousel-arrow.prev { left: 10px; }
+        .carousel-arrow.next { right: 10px; }
+
+        /* Thumbnails strip */
+        .thumbnails-strip {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding: 4px;
+        }
+
+        .thumb-item {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            background: #FFE4E8;
+        }
+
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumb-item.active {
+            border-color: #FF6B8B;
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.4);
+        }
+
+        /* Modal phóng to ảnh (Lightbox) */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(40, 20, 30, 0.88);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            border: 3px solid #fff;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Video Container tinh tế - Tương thích video dọc & ngang */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 133, 162, 0.3);
+            background: #111;
+            border: 3px solid rgba(255, 255, 255, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 480px;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            border-radius: 19px;
+            background: #000;
+        }
+
+        .video-badge-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 0 4px;
+        }
+
+        .video-badge-title {
+            font-weight: 700;
+            color: #9C3D66;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-upload-video {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--pastel-pink-main);
+            color: #B83265;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-upload-video:hover {
+            background: #FFE4E1;
+            transform: scale(1.03);
+        }
+
+        .video-custom-input {
+            display: none;
+        }
+
+        /* Lời chúc bạn bè vui tươi, chân thành, KHÔNG SẾN */
+        .romantic-letter {
+            background: rgba(255, 255, 255, 0.78);
+            border-radius: 20px;
+            padding: 22px 20px;
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            font-size: 1.02rem;
+            line-height: 1.65;
+            color: #4A3E4D;
+            text-align: left;
+            box-shadow: 0 6px 20px rgba(255, 182, 193, 0.18);
+        }
+
+        .letter-heading {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #C02758;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .romantic-letter p {
+            margin-bottom: 8px;
+        }
+
+        .romantic-letter p:last-child {
+            margin-bottom: 0;
+            color: #8C3A63;
+            font-weight: 600;
+        }
+
+        /* KHỐI THÔNG BÁO BẤT NGỜ CỰC MẠNH */
+        .surprise-climax-banner {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFEBEF 50%, #F3E8FF 100%);
+            border: 2.5px solid #FF85A2;
+            border-radius: 22px;
+            padding: 22px 18px;
+            box-shadow: 0 10px 30px rgba(255, 133, 162, 0.35), 0 0 20px rgba(255, 215, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: bannerGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes bannerGlow {
+            0% {
+                box-shadow: 0 8px 25px rgba(255, 133, 162, 0.3), 0 0 15px rgba(255, 215, 0, 0.3);
+                border-color: #FF85A2;
+            }
+            100% {
+                box-shadow: 0 14px 40px rgba(255, 133, 162, 0.5), 0 0 30px rgba(255, 215, 0, 0.6);
+                border-color: #F7B731;
+            }
+        }
+
+        .surprise-climax-banner::before {
+            content: '🎁';
+            position: absolute;
+            font-size: 70px;
+            right: -15px;
+            bottom: -15px;
+            opacity: 0.16;
+            pointer-events: none;
+        }
+
+        .surprise-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B8B, #FF8E9E);
+            color: #fff;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .surprise-highlight-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.45;
+            color: #C02758;
+            margin-bottom: 10px;
+            text-transform: none;
+            letter-spacing: -0.3px;
+        }
+
+        .surprise-highlight-text span.date-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFE873, #F7B731);
+            color: #7A3E00;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin: 0 4px;
+            box-shadow: 0 4px 10px rgba(247, 183, 49, 0.4);
+            transform: rotate(-2deg);
+        }
+
+        /* Countdown nhỏ đếm ngược đến 23/10 */
+        .countdown-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            padding: 6px 12px;
+            min-width: 58px;
+            border: 1px solid rgba(255, 182, 193, 0.6);
+        }
+
+        .countdown-num {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #C02758;
+            display: block;
+        }
+
+        .countdown-lbl {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Nút tương tác thêm ở cuối */
+        .action-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .btn-sub-action {
+            background: #fff;
+            border: 1.5px solid var(--pastel-pink-main);
+            color: #A34E78;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-sub-action:hover {
+            background: #FFF0F3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.35);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .glass-card {
+                padding: 24px 14px;
+                border-radius: 22px;
+            }
+
+            .main-title {
+                font-size: 2.1rem;
+            }
+
+            .celebrate-heading {
+                font-size: 2.1rem;
+            }
+
+            .showcase-title {
+                font-size: 1.7rem;
+            }
+
+            .carousel-viewport {
+                aspect-ratio: 1 / 1;
+            }
+
+            .surprise-highlight-text {
+                font-size: 1.15rem;
+            }
+
+            .countdown-row {
+                gap: 6px;
+            }
+
+            .countdown-box {
+                min-width: 46px;
+                padding: 4px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas hạt nền (Trái tim, cánh hoa pastel lơ lửng) -->
+    <canvas id="bgCanvas"></canvas>
+    
+    <!-- Canvas pháo hoa & hoa rơi khi mở quà -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Nút Bật/Tắt Nhạc Nền du dương -->
+    <button class="audio-toggle-btn" id="audioToggleBtn" title="Bật/Tắt nhạc nền">
+        🎵
+    </button>
+
+    <div class="app-container">
+        
+        <!-- ============================================== -->
+        <!-- BƯỚC 1: Mở đầu - Lời mời ngọt ngào (Không chào tên twiez) -->
+        <!-- ============================================== -->
+        <div class="glass-card step active" id="step1">
+            <div class="envelope-icon">💌</div>
+            <div class="badge-pill">Bí Mật Ngày 20/10 🌸</div>
+            <h1 class="main-title">Happy Twiez 20-10! ✨</h1>
+            <p class="sub-description">
+                Hôm nay là 20/10 nè! Có một món quà và điều bí mật bất ngờ dành riêng cho bạn. Khám phá ngay nhé!
+            </p>
+            <button class="btn-glow" id="btnStartSecret">
+                <span>Khám Phá Bí Mật 20/10</span>
+                <span style="font-size: 1.3rem;">✨</span>
+            </button>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- BƯỚC 2: Cú Lừa / Dẫn dắt cảm xúc bất ngờ -->
+        <!-- ============================================== -->
+        <div class="glass-card step" id="step2">
+            <div class="scanner-box">
+                <div class="radar-spinner">
+                    <div class="radar-circle"></div>
+                    <div class="radar-heart">💖</div>
+                </div>
+
+                <div class="badge-pill" id="scanBadge">Hệ Thống Quét Tín Hiệu 📡</div>
+                <div class="scanner-log" id="scannerLog">Đang kết nối tín hiệu...</div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+
+                <!-- Thẻ báo lỗi hài hước -->
+                <div class="alert-error-card" id="alertErrorCard">
+                    <div class="alert-error-title">
+                        <span>⚠️</span> CẢNH BÁO: QUÁ TẢI HỆ THỐNG!
+                    </div>
+                    <p style="font-size: 0.95rem; color: #8A3D59; line-height: 1.5;">
+                        Phát hiện nụ cười có độ sát thương ngọt ngào lên tới <strong>999.9%</strong>! Máy chủ đang bị tan chảy vì độ đáng yêu của bạn! 🥰
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- BƯỚC 3: Hộp Quà Bí Ẩn 3D Lấp Lánh -->
+        <!-- ============================================== -->
+        <div class="glass-card step" id="step3">
+            <div class="badge-pill">Món Quà Bất Ngờ 🎀</div>
+            <h2 class="main-title" style="font-size: 2.3rem;">Chạm Vào Bí Mật</h2>
+            <p class="sub-description" style="margin-bottom: 10px;">
+                Có một món quà đặc biệt đang chờ bạn mở ra... Hãy chạm nhẹ vào hộp quà nhé!
+            </p>
+
+            <div class="gift-scene" id="giftBox">
+                <div class="sparkle-aura"></div>
+                <div class="gift-box">
+                    <div class="gift-lid">
+                        <div class="ribbon-vertical"></div>
+                        <div class="gift-bow">
+                            <div class="bow-loop left"></div>
+                            <div class="bow-center"></div>
+                            <div class="bow-loop right"></div>
+                        </div>
+                    </div>
+                    <div class="gift-box-base">
+                        <div class="ribbon-vertical"></div>
+                        <div class="ribbon-horizontal"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tap-hint">
+                <span>👉</span> Nhấn trực tiếp vào hộp quà để mở <span>🎁</span>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- BƯỚC 4: Cao trào & Kết Quả (Showcase 5 Ảnh + Video Trong File Ảnh + Quà 23/10) -->
+        <!-- ============================================== -->
+        <div class="glass-card step" id="step4">
+            <div class="climax-container">
+                <div>
+                    <div class="flower-wreath">💐✨🌸</div>
+                    <h2 class="celebrate-heading">Happy Twiez 20-10!</h2>
+                    <p style="color: #9C5177; font-weight: 600; font-size: 1.05rem;">
+                        Chúc Twiez ngày 20/10 ngập tràn niềm vui, rạng rỡ và luôn hạnh phúc nhé!
+                    </p>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- KHỐI GIỚI THIỆU 5 ẢNH QUÀ TẶNG (CAROUSEL SLIDER) -->
+                <!-- ========================================== -->
+                <div class="gift-showcase-section">
+                    <div class="showcase-header">
+                        <div class="showcase-badge">🎁 Bật Mí Quà Tặng 20/10 🎁</div>
+                        <h3 class="showcase-title">Món Quà Dành Riêng Cho Bạn</h3>
+                        <p class="showcase-subtitle">Nhấp vào từng ảnh để ngắm nhìn chi tiết món quà nhé! ✨</p>
+                    </div>
+
+                    <!-- Khung ảnh chính trượt ngang -->
+                    <div class="carousel-viewport" id="carouselViewport">
+                        <button class="carousel-arrow prev" id="prevSlideBtn" title="Ảnh trước">‹</button>
+                        <button class="carousel-arrow next" id="nextSlideBtn" title="Ảnh kế tiếp">›</button>
+
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Ảnh 1 -->
+                            <div class="carousel-slide" data-index="0">
+                                <img src="ảnh/gift-1.jpg" onerror="this.onerror=null; this.src='anh/gift-1.jpg';" alt="Quà tặng 1">
+                                <div class="slide-tag">
+                                    <div class="slide-tag-title">🌸 Món quà ngọt ngào #1</div>
+                                    <div class="slide-tag-desc">Gửi trao sự dịu dàng và niềm vui nhỏ đến bạn</div>
+                                </div>
+                            </div>
+                            <!-- Ảnh 2 -->
+                            <div class="carousel-slide" data-index="1">
+                                <img src="ảnh/gift-2.jpg" onerror="this.onerror=null; this.src='anh/gift-2.jpg';" alt="Quà tặng 2">
+                                <div class="slide-tag">
+                                    <div class="slide-tag-title">💖 Niềm vui bất ngờ #2</div>
+                                    <div class="slide-tag-desc">Từng chi tiết nhỏ đều chứa đựng sự trân quý</div>
+                                </div>
+                            </div>
+                            <!-- Ảnh 3 -->
+                            <div class="carousel-slide" data-index="2">
+                                <img src="ảnh/gift-3.jpg" onerror="this.onerror=null; this.src='anh/gift-3.jpg';" alt="Quà tặng 3">
+                                <div class="slide-tag">
+                                    <div class="slide-tag-title">✨ Nâng niu vẻ đẹp #3</div>
+                                    <div class="slide-tag-desc">Chúc bạn luôn xinh tươi và rạng rỡ mỗi ngày</div>
+                                </div>
+                            </div>
+                            <!-- Ảnh 4 -->
+                            <div class="carousel-slide" data-index="3">
+                                <img src="ảnh/gift-4.jpg" onerror="this.onerror=null; this.src='anh/gift-4.jpg';" alt="Quà tặng 4">
+                                <div class="slide-tag">
+                                    <div class="slide-tag-title">🎀 Niềm vui trọn vẹn #4</div>
+                                    <div class="slide-tag-desc">Bởi vì nụ cười của bạn là điều tỏa sáng nhất hôm nay</div>
+                                </div>
+                            </div>
+                            <!-- Ảnh 5 -->
+                            <div class="carousel-slide" data-index="4">
+                                <img src="ảnh/gift-5.jpg" onerror="this.onerror=null; this.src='anh/gift-5.jpg';" alt="Quà tặng 5">
+                                <div class="slide-tag">
+                                    <div class="slide-tag-title">🎉 Đỉnh cao bất ngờ #5</div>
+                                    <div class="slide-tag-desc">Và phần thưởng đặc biệt nhất đang chờ bạn khám phá...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dải 5 ảnh thumbnail bên dưới -->
+                    <div class="thumbnails-strip" id="thumbnailsStrip">
+                        <div class="thumb-item active" data-index="0">
+                            <img src="ảnh/gift-1.jpg" onerror="this.onerror=null; this.src='anh/gift-1.jpg';" alt="Thumb 1">
+                        </div>
+                        <div class="thumb-item" data-index="1">
+                            <img src="ảnh/gift-2.jpg" onerror="this.onerror=null; this.src='anh/gift-2.jpg';" alt="Thumb 2">
+                        </div>
+                        <div class="thumb-item" data-index="2">
+                            <img src="ảnh/gift-3.jpg" onerror="this.onerror=null; this.src='anh/gift-3.jpg';" alt="Thumb 3">
+                        </div>
+                        <div class="thumb-item" data-index="3">
+                            <img src="ảnh/gift-4.jpg" onerror="this.onerror=null; this.src='anh/gift-4.jpg';" alt="Thumb 4">
+                        </div>
+                        <div class="thumb-item" data-index="4">
+                            <img src="ảnh/gift-5.jpg" onerror="this.onerror=null; this.src='anh/gift-5.jpg';" alt="Thumb 5">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- KHUNG VIDEO ĐÃ CHÈN TRỰC TIẾP FILE VIDEO TRONG THƯ MỤC ẢNH -->
+                <!-- ========================================== -->
+                <div>
+                    <div class="video-badge-header">
+                        <span class="video-badge-title">🎬 Video kỷ niệm 20/10</span>
+                        <label class="btn-upload-video" title="Thay đổi video khác nếu muốn">
+                            📁 Đổi video
+                            <input type="file" class="video-custom-input" id="videoFileInput" accept="video/*">
+                        </label>
+                    </div>
+
+                    <div class="video-wrapper">
+                        <video id="celebrationVideo" controls playsinline loop preload="auto" poster="ảnh/gift-1.jpg">
+                            <source src="ảnh/1792419909414_1857378406785586366_3712680555908955902.mp4" type="video/mp4">
+                            <source src="ảnh/video.mp4" type="video/mp4">
+                            <source src="anh/video.mp4" type="video/mp4">
+                            <source src="video.mp4" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ thẻ video.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- LỜI CHÚC TWIEZ 20/10 NGẮN GỌN, KHÔNG SẾN -->
+                <!-- ========================================== -->
+                <div class="romantic-letter" style="text-align: center; padding: 18px 16px;">
+                    <div class="letter-heading" style="justify-content: center; margin-bottom: 8px;">
+                        <span>💌</span> Chúc twiez 20/10 vui vẻ nha!!! hì
+                    </div>
+                    <p style="margin: 0; font-size: 1.05rem; line-height: 1.6; color: #554457;">
+                        Chúc twiez luôn xinh đẹp, vui vẻ, mọi việc thuận lợi và lúc nào cũng ngập tràn may mắn nha! 🥳🎉
+                    </p>
+                </div>
+
+                <!-- CÚ NỔ BẤT NGỜ CỰC MẠNH: THÔNG BÁO QUÀ CHÍNH THỨC -->
+                <div class="surprise-climax-banner">
+                    <div class="surprise-badge">✨ Bí Mật Cuối Cùng ✨</div>
+                    <div class="surprise-highlight-text">
+                        "Tèn tén ten... Quà chính thức sẽ có trong acc vào ngày <span class="date-highlight">23/10</span> nha! 🎉"
+                    </div>
+                    <p style="font-size: 0.92rem; color: #7E4F6D; font-weight: 500;">
+                        Hãy nhớ kiểm tra thông báo tài khoản vào ngày 23/10 để đón nhận món quà bất ngờ nhé! 🎁💳
+                    </p>
+
+                    <!-- Đếm ngược đến ngày 23/10 -->
+                    <div class="countdown-row">
+                        <div class="countdown-box">
+                            <span class="countdown-num" id="cdDays">00</span>
+                            <span class="countdown-lbl">Ngày</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-num" id="cdHours">00</span>
+                            <span class="countdown-lbl">Giờ</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-num" id="cdMinutes">00</span>
+                            <span class="countdown-lbl">Phút</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span class="countdown-num" id="cdSeconds">00</span>
+                            <span class="countdown-lbl">Giây</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút phụ tương tác -->
+                <div class="action-row">
+                    <button class="btn-sub-action" id="btnHeartBurst">
+                        💖 Thả Tim Bay Ngập Trời
+                    </button>
+                    <button class="btn-sub-action" id="btnReplay">
+                        🔄 Xem Lại Từ Đầu
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Lightbox Modal phóng to ảnh khi nhấp vào -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="lightbox-close-btn" id="lightboxCloseBtn">✕</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Ảnh phóng to">
+        </div>
+    </div>
+
+    <!-- SCRIPT CHÍNH -->
+    <script>
+        /* ========================================================
+           1. ÂM THANH DU DƯƠNG VÀ HIỆU ỨNG (Web Audio API)
+           ======================================================== */
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let musicTimer = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playChimeNote(freq, startTime, duration = 0.8, type = 'sine', gainVal = 0.12) {
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, startTime);
+
+                gain.gain.setValueAtTime(0, startTime);
+                gain.gain.linearRampToValueAtTime(gainVal, startTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start(startTime);
+                osc.stop(startTime + duration);
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        const melodyNotes = [
+            523.25, 659.25, 783.99, 1046.50,
+            587.33, 698.46, 880.00, 1046.50,
+            493.88, 659.25, 783.99, 987.77,
+            440.00, 523.25, 659.25, 880.00
+        ];
+
+        function startRomanticBgm() {
+            if (isMusicPlaying) return;
+            isMusicPlaying = true;
+            document.getElementById('audioToggleBtn').classList.add('playing');
+            document.getElementById('audioToggleBtn').innerHTML = '🎶';
+
+            let noteIdx = 0;
+            const ctx = getAudioContext();
+
+            function playNext() {
+                if (!isMusicPlaying) return;
+                const now = ctx.currentTime;
+                const note = melodyNotes[noteIdx % melodyNotes.length];
+                playChimeNote(note, now, 1.4, 'sine', 0.08);
+
+                if (noteIdx % 4 === 0) {
+                    playChimeNote(note / 2, now, 2.0, 'triangle', 0.05);
+                }
+
+                noteIdx++;
+                musicTimer = setTimeout(playNext, 460);
+            }
+
+            playNext();
+        }
+
+        function stopRomanticBgm() {
+            isMusicPlaying = false;
+            if (musicTimer) clearTimeout(musicTimer);
+            document.getElementById('audioToggleBtn').classList.remove('playing');
+            document.getElementById('audioToggleBtn').innerHTML = '🎵';
+        }
+
+        document.getElementById('audioToggleBtn').addEventListener('click', () => {
+            if (isMusicPlaying) {
+                stopRomanticBgm();
+            } else {
+                startRomanticBgm();
+            }
+        });
+
+        function playCelebrationFanfare() {
+            const ctx = getAudioContext();
+            const now = ctx.currentTime;
+            const fanfare = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+            fanfare.forEach((f, i) => {
+                playChimeNote(f, now + i * 0.12, 1.2, 'triangle', 0.15);
+            });
+        }
+
+        function playBlipSound() {
+            const ctx = getAudioContext();
+            playChimeNote(880 + Math.random() * 400, ctx.currentTime, 0.08, 'sine', 0.04);
+        }
+
+        /* ========================================================
+           2. CANVAS NỀN: TRÁI TIM & CÁNH HOA PASTEL RƠI DỊU DÀNG
+           ======================================================== */
+        const bgCanvas = document.getElementById('bgCanvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        let bgWidth = (bgCanvas.width = window.innerWidth);
+        let bgHeight = (bgCanvas.height = window.innerHeight);
+
+        window.addEventListener('resize', () => {
+            bgWidth = bgCanvas.width = window.innerWidth;
+            bgHeight = bgCanvas.height = window.innerHeight;
+        });
+
+        const pastelParticles = [];
+        const pastelColors = [
+            'rgba(255, 182, 193, 0.55)',
+            'rgba(255, 192, 203, 0.5)',
+            'rgba(230, 230, 250, 0.6)',
+            'rgba(255, 228, 225, 0.7)',
+            'rgba(255, 133, 162, 0.4)'
+        ];
+
+        class FloatingPastel {
+            constructor() {
+                this.reset(true);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * bgWidth;
+                this.y = initial ? Math.random() * bgHeight : -30;
+                this.size = 12 + Math.random() * 18;
+                this.speedY = 0.5 + Math.random() * 1.2;
+                this.speedX = Math.sin(Math.random() * 3) * 0.7;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.03;
+                this.type = Math.random() > 0.4 ? 'heart' : 'petal';
+                this.color = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+                this.alpha = 0.3 + Math.random() * 0.5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.015) * 0.8;
+                this.rotation += this.rotationSpeed;
+
+                if (this.y > bgHeight + 30 || this.x < -30 || this.x > bgWidth + 30) {
+                    this.reset(false);
+                }
+            }
+
+            draw() {
+                bgCtx.save();
+                bgCtx.translate(this.x, this.y);
+                bgCtx.rotate(this.rotation);
+                bgCtx.fillStyle = this.color;
+                bgCtx.globalAlpha = this.alpha;
+
+                if (this.type === 'heart') {
+                    const s = this.size / 15;
+                    bgCtx.beginPath();
+                    bgCtx.moveTo(0, 0);
+                    bgCtx.bezierCurveTo(-s * 5, -s * 6, -s * 10, s * 2, 0, s * 10);
+                    bgCtx.bezierCurveTo(s * 10, s * 2, s * 5, -s * 6, 0, 0);
+                    bgCtx.fill();
+                } else {
+                    bgCtx.beginPath();
+                    bgCtx.ellipse(0, 0, this.size * 0.6, this.size, 0, 0, Math.PI * 2);
+                    bgCtx.fill();
+                }
+
+                bgCtx.restore();
+            }
+        }
+
+        for (let i = 0; i < 35; i++) {
+            pastelParticles.push(new FloatingPastel());
+        }
+
+        function animateBg() {
+            bgCtx.clearRect(0, 0, bgWidth, bgHeight);
+            pastelParticles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+
+        /* ========================================================
+           3. CANVAS PHÁO HOA & HOA RƠI KHI MỞ QUÀ (CONFETTI)
+           ======================================================== */
+        const confettiCanvas = document.getElementById('confettiCanvas');
+        const cCtx = confettiCanvas.getContext('2d');
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+
+        let confettis = [];
+        const confettiColors = ['#FF6B8B', '#FF8E9E', '#FFB6C1', '#BA68C8', '#F7B731', '#FFFDD0', '#E6E6FA'];
+
+        class ConfettiPiece {
+            constructor(x, y, burst = false) {
+                this.x = x || Math.random() * confettiCanvas.width;
+                this.y = y || (burst ? confettiCanvas.height / 2 : -20);
+                this.size = 7 + Math.random() * 9;
+                if (burst) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 4 + Math.random() * 12;
+                    this.speedX = Math.cos(angle) * speed;
+                    this.speedY = Math.sin(angle) * speed - 4;
+                } else {
+                    this.speedX = (Math.random() - 0.5) * 4;
+                    this.speedY = 2 + Math.random() * 5;
+                }
+                this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.15;
+                this.opacity = 1;
+                this.gravity = 0.18;
+            }
+
+            update() {
+                this.speedY += this.gravity;
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.rotation += this.rotSpeed;
+                this.opacity -= 0.007;
+            }
+
+            draw() {
+                cCtx.save();
+                cCtx.translate(this.x, this.y);
+                cCtx.rotate(this.rotation);
+                cCtx.fillStyle = this.color;
+                cCtx.globalAlpha = Math.max(0, this.opacity);
+                cCtx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 0.7);
+                cCtx.restore();
+            }
+        }
+
+        function triggerConfettiBurst(count = 120, x, y) {
+            const originX = x || window.innerWidth / 2;
+            const originY = y || window.innerHeight / 2;
+            for (let i = 0; i < count; i++) {
+                confettis.push(new ConfettiPiece(originX, originY, true));
+            }
+        }
+
+        function animateConfetti() {
+            cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            for (let i = confettis.length - 1; i >= 0; i--) {
+                confettis[i].update();
+                confettis[i].draw();
+                if (confettis[i].opacity <= 0 || confettis[i].y > confettiCanvas.height + 50) {
+                    confettis.splice(i, 1);
+                }
+            }
+            requestAnimationFrame(animateConfetti);
+        }
+        animateConfetti();
+
+        /* ========================================================
+           4. ĐIỀU HƯỚNG CÁC BƯỚC (MULTI-STEP FLOW)
+           ======================================================== */
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const step4 = document.getElementById('step4');
+
+        function switchStep(fromStep, toStep) {
+            fromStep.classList.remove('active');
+            setTimeout(() => {
+                fromStep.style.display = 'none';
+                toStep.style.display = 'block';
+                setTimeout(() => {
+                    toStep.classList.add('active');
+                }, 30);
+            }, 300);
+        }
+
+        // BƯỚC 1 -> BƯỚC 2
+        document.getElementById('btnStartSecret').addEventListener('click', () => {
+            getAudioContext();
+            startRomanticBgm();
+            switchStep(step1, step2);
+            startScannerPrank();
+        });
+
+        // BƯỚC 2: Quét dữ liệu và báo lỗi đáng yêu
+        function startScannerPrank() {
+            const progressBar = document.getElementById('progressBar');
+            const scannerLog = document.getElementById('scannerLog');
+            const alertCard = document.getElementById('alertErrorCard');
+            const scanBadge = document.getElementById('scanBadge');
+
+            const messages = [
+                { percent: 15, text: "Đang định vị tọa độ người xem... 🛰️" },
+                { percent: 35, text: "Phân tích mức độ dịu dàng & đáng yêu... 🌸" },
+                { percent: 65, text: "Đo lường nụ cười: Kết quả vượt ngưỡng cho phép! ✨" },
+                { percent: 88, text: "CẢNH BÁO: Phát hiện người phụ nữ tuyệt vời nhất! 💖" },
+                { percent: 100, text: "LỖI HỆ THỐNG: Máy chủ bị tan chảy vì quá xinh đẹp! ⚠️" }
+            ];
+
+            let index = 0;
+
+            function runStep() {
+                if (index < messages.length) {
+                    const item = messages[index];
+                    progressBar.style.width = item.percent + "%";
+                    scannerLog.innerHTML = item.text;
+                    playBlipSound();
+
+                    if (item.percent === 100) {
+                        alertCard.style.display = 'block';
+                        scanBadge.innerText = 'CẢNH BÁO QUÁ TẢI ⚠️';
+                        scanBadge.style.background = '#FFE4E8';
+                        scanBadge.style.color = '#E63946';
+
+                        setTimeout(() => {
+                            triggerConfettiBurst(70);
+                            switchStep(step2, step3);
+                        }, 2800);
+                    } else {
+                        index++;
+                        setTimeout(runStep, 800 + Math.random() * 400);
+                    }
+                }
+            }
+
+            setTimeout(runStep, 600);
+        }
+
+        // BƯỚC 3: Mở Hộp Quà Bí Ẩn
+        const giftBox = document.getElementById('giftBox');
+        let isOpened = false;
+
+        giftBox.addEventListener('click', () => {
+            if (isOpened) return;
+            isOpened = true;
+
+            giftBox.classList.add('opened');
+            playCelebrationFanfare();
+
+            const rect = giftBox.getBoundingClientRect();
+            triggerConfettiBurst(150, rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+            setTimeout(() => {
+                switchStep(step3, step4);
+                startAutoSlide();
+                
+                // Tự động phát video nếu trình duyệt cho phép
+                const vid = document.getElementById('celebrationVideo');
+                if (vid) {
+                    vid.play().catch(err => {
+                        console.log("Cần tương tác chạm để phát video có tiếng:", err);
+                    });
+                }
+
+                setTimeout(() => triggerConfettiBurst(100), 400);
+                setTimeout(() => triggerConfettiBurst(100), 800);
+            }, 800);
+        });
+
+        /* ========================================================
+           5. CAROUSEL TRÌNH DIỄN 5 ẢNH QUÀ TẶNG & LIGHTBOX
+           ======================================================== */
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const carouselTrack = document.getElementById('carouselTrack');
+        const thumbItems = document.querySelectorAll('.thumb-item');
+        const prevBtn = document.getElementById('prevSlideBtn');
+        const nextBtn = document.getElementById('nextSlideBtn');
+        let autoSlideTimer = null;
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentSlide = index;
+
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            thumbItems.forEach((thumb, idx) => {
+                if (idx === currentSlide) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            stopAutoSlide();
+            goToSlide(currentSlide - 1);
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            stopAutoSlide();
+            goToSlide(currentSlide + 1);
+            startAutoSlide();
+        });
+
+        thumbItems.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                stopAutoSlide();
+                const idx = parseInt(thumb.getAttribute('data-index'), 10);
+                goToSlide(idx);
+                startAutoSlide();
+            });
+        });
+
+        function startAutoSlide() {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+            autoSlideTimer = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 3800);
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+        }
+
+        const carouselViewport = document.getElementById('carouselViewport');
+        carouselViewport.addEventListener('mouseenter', stopAutoSlide);
+        carouselViewport.addEventListener('mouseleave', startAutoSlide);
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carouselViewport.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        }, { passive: true });
+
+        carouselViewport.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 45) {
+                goToSlide(currentSlide + 1);
+            } else if (touchEndX - touchStartX > 45) {
+                goToSlide(currentSlide - 1);
+            }
+            startAutoSlide();
+        }, { passive: true });
+
+        // Lightbox phóng to ảnh
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+
+        document.querySelectorAll('.carousel-slide img').forEach(img => {
+            img.addEventListener('click', () => {
+                stopAutoSlide();
+                lightboxImg.src = img.src;
+                lightboxModal.classList.add('active');
+            });
+        });
+
+        lightboxCloseBtn.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+            startAutoSlide();
+        });
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                lightboxModal.classList.remove('active');
+                startAutoSlide();
+            }
+        });
+
+        /* ========================================================
+           6. HỖ TRỢ VIDEO & TẢI VIDEO TỪ MÁY
+           ======================================================== */
+        const celebrationVideo = document.getElementById('celebrationVideo');
+        const videoFileInput = document.getElementById('videoFileInput');
+
+        videoFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                celebrationVideo.src = fileURL;
+                celebrationVideo.play().catch(e => console.log("Cần tương tác để phát:", e));
+            }
+        });
+
+        /* ========================================================
+           7. ĐẾM NGƯỢC ĐẾN NGÀY 23/10 (QUÀ CÓ TRONG ACC)
+           ======================================================== */
+        function updateCountdown() {
+            const now = new Date();
+            let targetYear = now.getFullYear();
+            let targetDate = new Date(targetYear, 9, 23, 0, 0, 0);
+
+            if (now > targetDate) {
+                targetDate = new Date(targetYear + 1, 9, 23, 0, 0, 0);
+            }
+
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cdDays').innerText = String(days).padStart(2, '0');
+            document.getElementById('cdHours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cdMinutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cdSeconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        /* ========================================================
+           8. CÁC NÚT TƯƠNG TÁC THÊM
+           ======================================================== */
+        document.getElementById('btnHeartBurst').addEventListener('click', (e) => {
+            triggerConfettiBurst(90, e.clientX, e.clientY);
+            playChimeNote(880, audioCtx ? audioCtx.currentTime : 0, 0.4, 'triangle');
+        });
+
+        document.getElementById('btnReplay').addEventListener('click', () => {
+            isOpened = false;
+            stopAutoSlide();
+            giftBox.classList.remove('opened');
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('alertErrorCard').style.display = 'none';
+            document.getElementById('scanBadge').innerText = 'Hệ Thống Quét Tín Hiệu 📡';
+            document.getElementById('scanBadge').style.background = '';
+            document.getElementById('scanBadge').style.color = '';
+
+            const vid = document.getElementById('celebrationVideo');
+            if (vid) {
+                vid.pause();
+                vid.currentTime = 0;
+            }
+
+            switchStep(step4, step1);
+        });
+    </script>
+</body>
+</html>
